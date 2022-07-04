@@ -1,0 +1,17 @@
+{
+  "name": "what-if",
+  "version": "1.0.0",
+  "description": "",
+  "main": "what-if.js",
+  "scripts": {
+    "start": "esbuild WhatIf.user.ts --outfile=WhatIf.dev.user.js --watch",
+    "build": "tsc"
+  },
+  "author": "Armster15",
+  "license": "The Unlicense",
+  "devDependencies": {
+    "esbuild": "^0.14.48",
+    "typed-query-selector": "^2.6.1",
+    "typescript": "^4.7.4"
+  }
+}

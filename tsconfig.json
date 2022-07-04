@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "types": ["typed-query-selector"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noImplicitUseStrict": true
+  }
+}
