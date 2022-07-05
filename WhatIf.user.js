@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Apex Learning "What If" Grades
-// @version      1.0.0
+// @version      1.0.1
 // @description  Allows you to play around with your grades and see what you need to achieve a specific grade
 // @author       Armster15
 // @license      The Unlicense
@@ -190,10 +190,10 @@ Source Code formatted with Prettier.js (https://prettier.io)
                 const rawPercent = (pointsEarned / pointsTotal) * 100;
                 const roundedPercent = +rawPercent.toFixed(1);
                 if (isAnyGradeModified()) {
-                    overallScoreText.innerHTML = `${alertCircleOutline} <b>Overall Score: </b> <span>&nbsp;${roundedPercent}%</span>`;
+                    overallScoreText.innerHTML = `${alertCircleOutline} <b>Overall Score: </b> <span title="${rawPercent}%">&nbsp;${roundedPercent}%</span>`;
                 }
                 else {
-                    overallScoreText.innerHTML = `<b>Overall Score:</b> <span>&nbsp;${roundedPercent}%</span>`;
+                    overallScoreText.innerHTML = `<b>Overall Score:</b> <span title="${rawPercent}%">&nbsp;${roundedPercent}%</span>`;
                 }
                 // The first row that has all points earned by user and all potential points that can be earned in the whole course
                 const firstRow = document.querySelector(`.ag-floating-top-container div[row-id="t-0"]`);
