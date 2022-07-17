@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Apex Learning "What If" Grades
-// @version      1.0.1
+// @version      1.0.2
 // @description  Allows you to play around with your grades and see what you need to achieve a specific grade
 // @author       Armster15
 // @license      The Unlicense
@@ -24,7 +24,7 @@ Source Code formatted with Prettier.js (https://prettier.io)
     // DEV: Reset all the stuff
     document
       .querySelectorAll(
-        ".what-if-btn, .what-if-edit-grade-container, .ionicon, .what-if-overall-score-text"
+        ".what-if-btn, .what-if-edit-grade-container, .ionicon, .what-if-overall-score-text, .what-if-overall-percent-complete-text"
       )
       .forEach((el) => el.remove());
     document
@@ -243,6 +243,17 @@ Source Code formatted with Prettier.js (https://prettier.io)
         document.querySelector("div.activitiesListSection")!
       );
 
+    
+    const overallPercentCompleteText = document.createElement("p");
+    overallPercentCompleteText.classList.add("what-if-overall-percent-complete-text");
+    document
+      .querySelector("div.activitiesListSection")
+      ?.parentElement?.insertBefore(
+        overallPercentCompleteText,
+        document.querySelector("div.activitiesListSection")!
+      );
+
+
     const calculateOverallGrade = () => {
       // Overall grade text
       var pointsEarned = 0;
@@ -301,7 +312,24 @@ Source Code formatted with Prettier.js (https://prettier.io)
       return isModified;
     };
 
+    const percentOfCourseCompleted = () => {
+      var completed = 0;
+
+      for(const row of rows) {
+          let text = (row.children[4] as HTMLElement).innerText.toLowerCase();
+          if(text == "complete" || text == "submitted" || text == "teacher entered") {
+              completed += 1;
+          }
+      }
+      
+      const rawPercent = (completed / rows.length) * 100;
+      const roundedPercent = +rawPercent.toFixed(1);
+
+      overallPercentCompleteText.innerHTML = `<b title="Not your grade :)">Percent of Course Completed:</b> <span title="${rawPercent}%">${roundedPercent}%</span>`
+    }
+
     calculateOverallGrade();
+    percentOfCourseCompleted();
   };
 
   if(isDev) main()
