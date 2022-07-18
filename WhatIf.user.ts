@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         Apex Learning "What If" Grades
-// @version      1.0.3
+// @version      1.0.4
 // @description  Allows you to play around with your grades and see what you need to achieve a specific grade
 // @author       Armster15
 // @license      The Unlicense
@@ -325,7 +325,7 @@ Source Code formatted with Prettier.js (https://prettier.io)
       const rawPercent = (completed / rows.length) * 100;
       const roundedPercent = +rawPercent.toFixed(1);
 
-      overallPercentCompleteText.innerHTML = `<b title="Not your grade :)">Percent of Course Completed:</b> <span title="${rawPercent}%">${roundedPercent}%</span>`
+      overallPercentCompleteText.innerHTML = `<b title="Not your grade :)">Activities Completed:</b> <span>${completed}/${rows.length}</span> <span title="${rawPercent}%">(${roundedPercent}%)</span>`
     }
 
     calculateOverallGrade();
